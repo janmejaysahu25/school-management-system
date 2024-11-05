@@ -3,7 +3,7 @@ const app = express();
 const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
 const classAssignmentRoutes = require('./routes/classAssignmentRoutes');
-const welcomeRoute = require('./routes/WelcomeRoute'); // Corrected this line
+const welcomeRoute = require(' ./routes/WelcomeRoute');
 
 app.use(express.json());
 
