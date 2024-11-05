@@ -1,4 +1,3 @@
-// controllers/studentController.js
 const db = require('../db'); // Import your database connection
 
 // Function to add a new student
