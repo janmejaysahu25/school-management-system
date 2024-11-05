@@ -6,7 +6,7 @@ exports.addStudent = (req, res) => {
     const query = 'INSERT INTO students (name, age, grade, contact) VALUES (?, ?, ?, ?)';
     db.query(query, [name, age, grade, contact], (err, result) => {
         if (err) return res.status(400).json({ error: err.message });
-        res.status(201).json({ id: result.insertId, name, age, grade, contact });
+        res.status(201).json({ message: "Add students data Successfully" });
     });
 };
 

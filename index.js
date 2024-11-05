@@ -4,7 +4,7 @@ const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
 const classAssignmentRoutes = require('./routes/classAssignmentRoutes');
 
-const welcomeRoute = require('./routes/welcomeRouts');
+const welcomeRoute = require('./routes/welcomeRoutes');
 
 app.use(express.json());
 
@@ -16,7 +16,7 @@ app.use('/students', studentRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/class_assignments', classAssignmentRoutes);
 
-const PORT = process.env.PORT || 3009;
+const PORT = process.env.PORT || 3050;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
