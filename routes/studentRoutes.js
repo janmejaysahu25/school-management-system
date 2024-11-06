@@ -5,8 +5,7 @@ const router = express.Router();
 
 console.log("Route registered");
 
-// Define your routes
-router.post('/', validateStudent, studentController.addStudent); // Ensure this points to a defined controller function
+router.post('/', validateStudent, studentController.addStudent);
 router.get('/', studentController.getAllStudents);
 router.get('/:id', studentController.getStudentById);
 router.put('/:id', validateStudent, studentController.updateStudent);

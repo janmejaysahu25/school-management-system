@@ -1,4 +1,3 @@
-// controllers/WelcomeController.js
 const db = require('../db');
 
 exports.get = (req, res) => {

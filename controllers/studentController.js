@@ -1,6 +1,5 @@
-const db = require('../db'); // Import your database connection
+const db = require('../db');
 
-// Function to add a new student
 exports.addStudent = (req, res) => {
     const { name, age, grade, contact } = req.body;
     const query = 'INSERT INTO students (name, age, grade, contact) VALUES (?, ?, ?, ?)';
@@ -10,7 +9,6 @@ exports.addStudent = (req, res) => {
     });
 };
 
-// Function to get all students
 exports.getAllStudents = (req, res) => {
     const query = 'SELECT * FROM students';
     db.query(query, (err, results) => {
@@ -19,7 +17,6 @@ exports.getAllStudents = (req, res) => {
     });
 };
 
-// Function to get a student by ID
 exports.getStudentById = (req, res) => {
     const studentId = req.params.id;
     const query = 'SELECT * FROM students WHERE id = ?';
@@ -30,7 +27,6 @@ exports.getStudentById = (req, res) => {
     });
 };
 
-// Function to update a student by ID
 exports.updateStudent = (req, res) => {
     const studentId = req.params.id;
     const { name, age, grade, contact } = req.body;
@@ -42,7 +38,6 @@ exports.updateStudent = (req, res) => {
     });
 };
 
-// Function to delete a student by ID
 exports.deleteStudent = (req, res) => {
     const studentId = req.params.id;
     const query = 'DELETE FROM students WHERE id = ?';

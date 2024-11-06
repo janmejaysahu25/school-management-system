@@ -1,6 +1,5 @@
 const Joi = require('joi');
 
-// Student validation schema
 const studentSchema = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     age: Joi.number().integer().min(5).max(100).required(),
@@ -8,7 +7,6 @@ const studentSchema = Joi.object({
     contact: Joi.string().pattern(/^[0-9]+$/).required()
 });
 
-// Teacher validation schema
 const teacherSchema = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     subject: Joi.string().required(),

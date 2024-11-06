@@ -8,10 +8,8 @@ const welcomeRoute = require('./routes/welcomeRoutes');
 
 app.use(express.json());
 
-// Use the welcome route
 app.use('/', welcomeRoute);
 
-// Use the defined routes
 app.use('/students', studentRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/class_assignments', classAssignmentRoutes);

@@ -1,6 +1,5 @@
 const db = require('../db');
 
-// Assign a class teacher to a student
 exports.assignTeacher = (req, res) => {
     const { student_id, teacher_id } = req.body;
     const query = 'INSERT INTO class_assignments (student_id, teacher_id) VALUES (?, ?)';
@@ -10,7 +9,6 @@ exports.assignTeacher = (req, res) => {
     });
 };
 
-// Get all class assignments
 exports.getClassAssignments = (req, res) => {
     const query = `
         SELECT 
@@ -29,7 +27,7 @@ exports.getClassAssignments = (req, res) => {
     });
 };
 exports.deleteClassAssignment = (req, res) => {
-    const { id } = req.params; // Get the assignment ID from the request parameters
+    const { id } = req.params;
     const query = 'DELETE FROM class_assignments WHERE id = ?';
 
     db.query(query, [id], (err, results) => {
@@ -37,7 +35,7 @@ exports.deleteClassAssignment = (req, res) => {
         if (results.affectedRows === 0) {
             return res.status(404).json({ message: 'Class assignment not found' });
         }
-        res.status(200).send({ message: "Assaignment deleted Successfully" }); // Send a No Content response
+        res.status(200).send({ message: "Assaignment deleted Successfully" });
     });
 };
 
