@@ -27,7 +27,7 @@ exports.getClassAssignments = (req, res) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(results);
     });
-}; // Delete a class assignment by ID
+};
 exports.deleteClassAssignment = (req, res) => {
     const { id } = req.params; // Get the assignment ID from the request parameters
     const query = 'DELETE FROM class_assignments WHERE id = ?';
@@ -38,5 +38,29 @@ exports.deleteClassAssignment = (req, res) => {
             return res.status(404).json({ message: 'Class assignment not found' });
         }
         res.status(200).send({ message: "Assaignment deleted Successfully" }); // Send a No Content response
+    });
+};
+
+exports.getAssignmentsByTeacher = (req, res) => {
+    const teacherId = req.params.teacherId;
+
+    const query = `
+        SELECT COUNT(ca.student_id) AS number_of_students, ca.teacher_id, t.name AS teacher_name
+        FROM class_assignments ca
+        JOIN teachers t ON ca.teacher_id = t.id
+        WHERE ca.teacher_id = ?
+        GROUP BY ca.teacher_id;
+    `;
+
+    db.query(query, [teacherId], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database query failed' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'No students found for this teacher' });
+        }
+
+        res.status(200).json(results[0]);
     });
 };

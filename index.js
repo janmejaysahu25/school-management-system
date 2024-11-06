@@ -16,7 +16,7 @@ app.use('/students', studentRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/class_assignments', classAssignmentRoutes);
 
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 3067;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
